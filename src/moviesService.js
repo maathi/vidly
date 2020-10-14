@@ -2,7 +2,7 @@ let movies = [
   {
     id: 1,
     title: "the crazy dude",
-    genre: { id: "aaa", name: "Action" },
+    genre: { id: "aaa", name: "action" },
     stock: 2,
     rate: 3.5,
   },
@@ -23,14 +23,14 @@ let movies = [
   {
     id: 4,
     title: "one bullet left",
-    genre: { id: "aaa", name: "Action" },
+    genre: { id: "aaa", name: "action" },
     stock: 5,
     rate: 2.2,
   },
   {
     id: 5,
     title: "zero mercy",
-    genre: { id: "aaa", name: "Action" },
+    genre: { id: "aaa", name: "action" },
     stock: 5,
     rate: 6.3,
   },
