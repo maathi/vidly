@@ -2,10 +2,10 @@ import React from "react";
 import propTypes from "prop-types";
 
 const Pager = (props) => {
-  const { numberOfMovies, pageSize, page, onPageClick } = props;
-  const pageCount = Math.ceil(numberOfMovies / pageSize);
-  if (pageCount === 0) return null;
-  console.log(pageCount);
+  const { pageCount, page, onPageClick } = props;
+
+  if (pageCount <= 1) return null;
+
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">

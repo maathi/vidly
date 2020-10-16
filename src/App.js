@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Movie from "./components/movie";
+import Home from "./components/home";
 
 function App() {
   return (
     <div className="container-fluid">
-      <Movie></Movie>
+      <Home></Home>
     </div>
   );
 }
