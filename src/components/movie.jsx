@@ -1,36 +1,38 @@
 import React, { Component } from "react";
 import { getMovies } from "../moviesService";
-
-import Pager from "./pager";
-import Menu from "./genre";
+import _ from "lodash";
 
 class Movie extends Component {
-  state = { movies: getMovies(), pageSize: 4 };
+  state = {
+    movies: getMovies(),
+    pageSize: 4,
+    sortColumn: { path: "title", ord: "asc" },
+  };
 
   componentDidMount() {
     this.props.setPageCount(
       Math.ceil(this.state.movies.length / this.state.pageSize)
     );
+    this.onSort("title");
   }
 
-  componentDidUpdate() {
-    // console.log(this.state.movies.length, this.state.pageSize);
-    // this.props.setPageCount(
-    //   Math.ceil(this.state.movies.length / this.state.pageSize)
-    // );
+  onSort(path) {
+    if (path === this.state.sortColumn.path)
+      var ord = this.state.sortColumn.ord === "asc" ? "desc" : "asc";
+    else var ord = "asc";
+
+    let movies = _.orderBy(this.state.movies, [path], [ord]);
+    this.setState({
+      movies: movies,
+      sortColumn: { path, ord },
+    });
   }
-  // toPage(n) {
-  //   let m = this.moviesByPage(n);
-  //   this.setState({
-  //     moviesInPage: m,
-  //     page: n,
-  //   });
-  // }
 
   getMovies() {
     //get all movies
     let movies = this.state.movies;
     //filter
+
     if (this.props.selectedGenre) {
       movies = movies.filter((m) => {
         return m.genre.id == this.props.selectedGenre.id;
@@ -39,11 +41,6 @@ class Movie extends Component {
 
     let start = (this.props.page - 1) * this.state.pageSize;
     return movies.slice(start, start + this.state.pageSize);
-  }
-
-  moviesByPage(n) {
-    let start = (n - 1) * this.state.pageSize;
-    return this.state.movies.slice(start, start + this.state.pageSize);
   }
 
   handleLike(id) {
@@ -77,26 +74,43 @@ class Movie extends Component {
     );
   }
 
-  filter(genre) {
-    let movies = getMovies().filter((m) => {
-      return m.genre.id == genre.id;
-    });
-
-    this.setState({
-      movies: movies,
-      // numberOfMovies: movies.length,
-      // page: 1,
-    });
-  }
   render() {
     return (
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Rate</th>
+            <th
+              onClick={() => {
+                this.onSort("title");
+              }}
+              scope="col"
+            >
+              Title
+            </th>
+            <th
+              onClick={() => {
+                this.onSort("genre.name");
+              }}
+              scope="col"
+            >
+              Genre
+            </th>
+            <th
+              onClick={() => {
+                this.onSort("stock");
+              }}
+              scope="col"
+            >
+              Stock
+            </th>
+            <th
+              onClick={() => {
+                this.onSort("rate");
+              }}
+              scope="col"
+            >
+              Rate
+            </th>
             <th></th>
             <th></th>
           </tr>
