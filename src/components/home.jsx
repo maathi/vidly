@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-
 import Pager from "./pager";
 import Menu from "./genre";
-import Movie from "./movie";
+import Movies from "./movies";
 
 class Home extends Component {
   state = {
@@ -51,13 +50,13 @@ class Home extends Component {
         </div>
         <div className="col-9">
           {/* <p>showing {count} movies in the database</p> */}
-          <Movie
+          <Movies
             page={this.state.page}
             setPageCount={(n) => {
               this.setPageCount(n);
             }}
             selectedGenre={this.state.selectedGenre}
-          ></Movie>
+          ></Movies>
           <Pager
             page={this.state.page}
             pageCount={this.state.pageCount}
