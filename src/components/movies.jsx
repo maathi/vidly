@@ -82,79 +82,85 @@ class Movies extends Component {
   }
   render() {
     return (
-      <table className="table">
-        <thead>
-          <tr className="clickable">
-            <th
-              onClick={() => {
-                this.onSort("title");
-              }}
-              scope="col"
-            >
-              Title {this.renderSortIcon("title")}
-            </th>
-            <th
-              onClick={() => {
-                this.onSort("genre.name");
-              }}
-              scope="col"
-            >
-              Genre {this.renderSortIcon("genre.name")}
-            </th>
-            <th
-              onClick={() => {
-                this.onSort("stock");
-              }}
-              scope="col"
-            >
-              Stock {this.renderSortIcon("stock")}
-            </th>
-            <th
-              onClick={() => {
-                this.onSort("rate");
-              }}
-              scope="col"
-            >
-              Rate {this.renderSortIcon("rate")}
-            </th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.getMovies().map((movie) => {
-            return (
-              <tr key={movie.id}>
-                <td>
-                  <Link to={"movies/" + movie.id}>{movie.title}</Link>
-                </td>
-                <td>{movie.genre.name}</td>
-                <td>{movie.stock}</td>
-                <td>{movie.rate}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      this.handleLike(movie.id);
-                    }}
-                  >
-                    {movie.liked === true ? 1 : 0}
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => {
-                      this.handleDelete(movie);
-                    }}
-                  >
-                    delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div>
+        <Link to={"/movies/new"}>
+          {" "}
+          <button className="btn btn-success">Add</button>
+        </Link>
+        <table className="table">
+          <thead>
+            <tr className="clickable">
+              <th
+                onClick={() => {
+                  this.onSort("title");
+                }}
+                scope="col"
+              >
+                Title {this.renderSortIcon("title")}
+              </th>
+              <th
+                onClick={() => {
+                  this.onSort("genre.name");
+                }}
+                scope="col"
+              >
+                Genre {this.renderSortIcon("genre.name")}
+              </th>
+              <th
+                onClick={() => {
+                  this.onSort("stock");
+                }}
+                scope="col"
+              >
+                Stock {this.renderSortIcon("stock")}
+              </th>
+              <th
+                onClick={() => {
+                  this.onSort("rate");
+                }}
+                scope="col"
+              >
+                Rate {this.renderSortIcon("rate")}
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.getMovies().map((movie) => {
+              return (
+                <tr key={movie.id}>
+                  <td>
+                    <Link to={"movies/" + movie.id}>{movie.title}</Link>
+                  </td>
+                  <td>{movie.genre.name}</td>
+                  <td>{movie.stock}</td>
+                  <td>{movie.rate}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        this.handleLike(movie.id);
+                      }}
+                    >
+                      {movie.liked === true ? 1 : 0}
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => {
+                        this.handleDelete(movie);
+                      }}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

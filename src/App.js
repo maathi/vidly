@@ -5,6 +5,7 @@ import Home from "./components/home";
 import Navbar from "./components/navbar";
 import NotFound from "./components/not-found";
 import Movie from "./components/movie";
+import MovieForm from "./components/movieForm";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/not-found">
           <h2>not found</h2>
+        </Route>
+        <Route path="/movies/new">
+          <MovieForm></MovieForm>
         </Route>
         <Route path="/movies/:id" component={Movie}></Route>
         <Redirect exact from="/" to="/home"></Redirect>
