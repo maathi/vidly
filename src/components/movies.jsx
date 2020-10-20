@@ -36,7 +36,7 @@ class Movies extends Component {
 
     if (this.props.selectedGenre) {
       movies = movies.filter((m) => {
-        return m.genre.id == this.props.selectedGenre.id;
+        return m.genre.id === this.props.selectedGenre.id;
       });
     }
 
@@ -47,7 +47,7 @@ class Movies extends Component {
   handleLike(id) {
     let movies = this.state.movies;
     movies.map((m) => {
-      if (m.id == id) {
+      if (m.id === id) {
         if (m.liked != true) {
           m.liked = true;
         } else {
@@ -77,7 +77,7 @@ class Movies extends Component {
 
   renderSortIcon(path) {
     if (path != this.state.sortColumn.path) return null;
-    if (this.state.sortColumn.ord == "asc") return "+";
+    if (this.state.sortColumn.ord === "asc") return "+";
     return "-";
   }
   render() {

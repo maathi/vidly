@@ -13,7 +13,7 @@ const Pager = (props) => {
           return (
             <li
               key={i}
-              className={page == i + 1 ? "page-item active" : "page-item"}
+              className={page === i + 1 ? "page-item active" : "page-item"}
             >
               <a
                 className="page-link"
