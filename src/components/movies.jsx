@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getMovies } from "../moviesService";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 class Movies extends Component {
   state = {
     movies: getMovies(),
@@ -11,9 +11,17 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    this.props.setPageCount(
-      Math.ceil(this.state.movies.length / this.state.pageSize)
-    );
+    axios.post("http://localhost:4000/graphql", { bom: "d", f: "ds" });
+
+    // .then((res) => console.log(res));
+    // const options = {
+    //   method: "POST",
+    //   headers: { "content-type": "application/x-www-form-urlencoded" },
+    //   data: JSON.stringify({ query: "{ movies:{id,title} }" }),
+    //   url: "http://localhost:4000/graphql",
+    // };
+    // axios(options).then((res) => console.log(res.data));
+
     this.onSort("title");
   }
 
