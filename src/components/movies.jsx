@@ -1,27 +1,19 @@
 import React, { Component } from "react";
 import { getMovies } from "../moviesService";
 import _ from "lodash";
+import axios from "axios"
 import { Link } from "react-router-dom";
-import axios from "axios";
 class Movies extends Component {
   state = {
-    movies: getMovies(),
+    movies: [],
     pageSize: 4,
     sortColumn: { path: "title", ord: "desc" },
   };
 
-  componentDidMount() {
-    axios.post("http://localhost:4000/graphql", { bom: "d", f: "ds" });
 
-    // .then((res) => console.log(res));
-    // const options = {
-    //   method: "POST",
-    //   headers: { "content-type": "application/x-www-form-urlencoded" },
-    //   data: JSON.stringify({ query: "{ movies:{id,title} }" }),
-    //   url: "http://localhost:4000/graphql",
-    // };
-    // axios(options).then((res) => console.log(res.data));
-
+  async componentDidMount() {
+    let res = await getMovies();
+    this.setState({movies: res.data.data.movies})
     this.onSort("title");
   }
 

@@ -1,5 +1,6 @@
 {
-    "workbench.colorTheme": "Dracula",
-    "editor.fontFamily": "'hack','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontWeight": "400"
+    "workbench.colorTheme": "Abyss",
+    "editor.fontFamily": "'JetBrains Mono', 'hack','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontWeight": "400",
+    "window.zoomLevel": 1
 }

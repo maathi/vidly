@@ -1,3 +1,5 @@
+import axios from "axios"
+
 let genres = [
   { id: "aaa", name: "action" },
   { id: "ccc", name: "comedy" },
@@ -6,7 +8,10 @@ let genres = [
 ];
 
 function getGenres() {
-  return genres;
+  let res = axios
+  .post("http://localhost:4000/graphql", {"query": "{genres{id, name}}"})
+
+ return res
 }
 
 export { getGenres };

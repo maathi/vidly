@@ -39,7 +39,7 @@ class Home extends Component {
       <div className="row">
         <div className="col-3">
           <Menu
-            // SelectedGenre={this.state.selectedGenre}
+            SelectedGenre={this.state.selectedGenre}
             // filter={(genre) => {
             //   this.filter(genre);
             // }}
